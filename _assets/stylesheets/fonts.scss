@@ -1,0 +1,67 @@
+// =============================================================================
+// Fonts
+// =============================================================================
+
+@charset "UTF-8";
+
+// Roboto Condensed
+// =============================================================================
+
+@font-face {
+  font-family: 'Roboto Condensed';
+  font-style: normal;
+  font-weight: 700;
+  src: asset_url('cormorant-garamond/Cormorant-Garamond-700.eot');
+  src:
+    asset_url('cormorant-garamond/Cormorant-Garamond-700.eot?#iefix') format('embedded-opentype'),
+    local('Roboto Condensed Medium'),
+    local('Cormorant-Garamond-600'),
+    asset_url('cormorant-garamond/Cormorant-Garamond-700.woff2') format('woff2'),
+    asset_url('cormorant-garamond/Cormorant-Garamond-700.woff') format('woff'),
+    asset_url('cormorant-garamond/Cormorant-Garamond-700.ttf') format('truetype');
+}
+
+// Martel
+// =============================================================================
+
+@font-face {
+  font-family: 'Martel';
+  font-style: normal;
+  font-weight: 300;
+  src: asset_url('lato/Martel-300.eot');
+  src:
+    asset_url('lato/Martel-300.eot?#iefix') format('embedded-opentype'),
+    local('Martel Light'),
+    local('Martel-300'),
+    asset_url('lato/Martel-300.woff2') format('woff2'),
+    asset_url('lato/Martel-300.woff') format('woff'),
+    asset_url('lato/Martel-300.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Martel';
+  font-style: normal;
+  font-weight: 400;
+  src: asset_url('lato/Martel-regular.eot');
+  src:
+    asset_url('lato/Martel-regular.eot?#iefix') format('embedded-opentype'),
+    local('Martel Regular'),
+    local('Martel-regular'),
+    asset_url('lato/Martel-regular.woff2') format('woff2'),
+    asset_url('lato/Martel-regular.woff') format('woff'),
+    asset_url('lato/Martel-regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Martel';
+  font-style: normal;
+  font-weight: 700;
+  src: asset_url('lato/Martel-700.eot');
+  src:
+    asset_url('lato/Martel-700.eot?#iefix') format('embedded-opentype'),
+    local('Martel Bold'),
+    local('Martel-700'),
+    asset_url('lato/Martel-700.woff2') format('woff2'),
+    asset_url('lato/Martel-700.woff') format('woff'),
+    asset_url('lato/Martel-700.ttf') format('truetype');
+}
