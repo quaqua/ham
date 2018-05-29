@@ -1,23 +1,27 @@
 #include <avr/io.h>
-#include <mega16.h>
 #include <util/delay.h>
 
 #define LED1 (1 << PB0)
-#define LED2 (1 << PB2)
-#define LED1_DDR DDRA // output
-#define LED2_DDR DDRB // output
-#define LED1_PORT PORTA
-#define LED2_PORT PORTB
+#define LED2 (1 << PB1)
+#define LED3 (1 << PB2)
+
+#define BTN1 (1 << PD7)
 
 int main(void) {
 
-  LED1_DDR = LED1;
-  LED2_DDR = LED2;
+  DDRB = LED1 | LED2 | LED3;
+  DDRD &= ~BTN1;
 
   while (1) {
-    LED1_PORT ^= LED1;
-    _delay_ms(1000);
-    LED2_PORT ^= LED2;
-    _delay_ms(1000);
+    PORTB &= ~LED3;
+    if (PIND & BTN1 == BTN1) {
+      PORTB |= LED3;
+    }
+    // PORTB |= LED1;
+    // PORTB &= ~LED2;
+    // _delay_ms(100);
+    // PORTB &= ~LED1;
+    // PORTB |= LED2;
+    // _delay_ms(500);
   }
 }
