@@ -1,0 +1,14 @@
+{
+  "name": "mqtt-webserver",
+  "private": true,
+  "version": "1.0.0",
+  "description": "MQTT Webserver for HAM",
+  "main": "server.js",
+  "license": "MIT",
+  "scripts": {
+    "server": "node server.js"
+  },
+  "dependencies": {
+    "mosca": "^2.8.3"
+  }
+}

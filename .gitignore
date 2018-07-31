@@ -12,3 +12,5 @@ Thumbs.db
 Gemfile.lock
 yarn.lock
 .idea
+
+node_modules
