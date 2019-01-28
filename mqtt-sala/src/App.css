@@ -1,0 +1,117 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat|Nobile');
+
+html, body, #root, #root > div, .react-swipeable-view-container {
+  font-family: 'Nobile', sans-serif;
+  background: #000;
+  height: 100%;
+  cursor: none !important;
+}
+
+.widgets-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.widget {
+  width: 180px;
+  height: 180px;
+  padding: 10px;
+}
+
+.widget .widget-label {
+  margin: 0 1em;
+  font-size: 1.5em;
+  color: #3e98c7;
+  text-align: center;
+}
+
+.widget time {
+  text-align: center;
+  display: block;
+  color: #999;
+  font-size: 0.8em;
+  margin-bottom: 1em;
+}
+
+.start-screen,
+.time-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-screen {
+  height: 100%;
+  color: #eee;
+}
+
+.time-info {
+  font-family: Montserrat;
+}
+
+.time-info .date {
+  font-size: 1.2em;
+}
+
+.time-info .time {
+  font-size: 7em;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
+
+.temp-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2em;
+}
+
+.start-screen-widget {
+  width: 150px;
+  padding: 10px;
+  text-align: center;
+  border-right: 1px solid #3e98c7;
+  color: #3e98c7;
+}
+
+.start-screen-widget:last-child {
+  border-right: none;
+}
+
+.start-screen-widget .widget-label {
+  font-size: 1em;
+}
+
+.start-screen-widget .widget-value {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.player {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.player .play-stop {
+  margin: 0 4em;
+}
+
+.player .play-stop .material-icons {
+  color: #fff;
+  font-size: 10em;
+  line-height: 1em;
+}
+
+.player .volume-btn {
+  display: flex;
+  align-items: center;
+}
+
+.player .volume-btn .material-icons {
+  font-size: 5em;
+  line-height: 1em;
+  color: #aaa;
+}

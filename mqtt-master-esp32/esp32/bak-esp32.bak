@@ -6,10 +6,10 @@ extern "C" {
 }
 #include <AsyncMqttClient.h>
 
-#define WIFI_SSID "GRAST"
-#define WIFI_PASSWORD "carpe diem"
+#define WIFI_SSID "AntennaX"
+#define WIFI_PASSWORD "anstattda$$"
 
-#define MQTT_HOST IPAddress(192, 168, 178, 114)
+#define MQTT_HOST IPAddress(10, 0, 0, 6)
 #define MQTT_PORT 1883
 
 AsyncMqttClient mqttClient;
@@ -47,17 +47,18 @@ void onMqttConnect(bool sessionPresent) {
   Serial.println("Connected to MQTT.");
   Serial.print("Session present: ");
   Serial.println(sessionPresent);
-  uint16_t packetIdSub = mqttClient.subscribe("test/lol", 2);
+  uint16_t packetIdSub = mqttClient.subscribe("shutter/1", 2);
   Serial.print("Subscribing at QoS 2, packetId: ");
   Serial.println(packetIdSub);
-  mqttClient.publish("test/lol", 0, true, "test 1");
-  Serial.println("Publishing at QoS 0");
-  uint16_t packetIdPub1 = mqttClient.publish("test/lol", 1, true, "test 2");
-  Serial.print("Publishing at QoS 1, packetId: ");
-  Serial.println(packetIdPub1);
-  uint16_t packetIdPub2 = mqttClient.publish("test/lol", 2, true, "test 3");
-  Serial.print("Publishing at QoS 2, packetId: ");
-  Serial.println(packetIdPub2);
+
+  // mqttClient.publish("shutter/1", 0, true, "test 1");
+  // Serial.println("Publishing at QoS 0");
+  // uint16_t packetIdPub1 = mqttClient.publish("shutter/1", 1, true, "test 2");
+  // Serial.print("Publishing at QoS 1, packetId: ");
+  // Serial.println(packetIdPub1);
+  // uint16_t packetIdPub2 = mqttClient.publish("shutter/1", 2, true, "test 3");
+  // Serial.print("Publishing at QoS 2, packetId: ");
+  // Serial.println(packetIdPub2);
 }
 
 void onMqttDisconnect(AsyncMqttClientDisconnectReason reason) {
@@ -87,7 +88,7 @@ void onMqttMessage(char* topic, char* payload, AsyncMqttClientMessageProperties 
   Serial.print("  topic: ");
   Serial.println(topic);
   Serial.print("  qos: ");
-  Serial.println(properties.qos);
+  Serial.println(payload);
   Serial.print("  dup: ");
   Serial.println(properties.dup);
   Serial.print("  retain: ");
@@ -98,12 +99,30 @@ void onMqttMessage(char* topic, char* payload, AsyncMqttClientMessageProperties 
   Serial.println(index);
   Serial.print("  total: ");
   Serial.println(total);
+  if (String(topic) == "shutter/1") {
+    if ( String(payload) == "up" ) {
+      Serial.print("initiating shutter/1 up");
+      digitalWrite(10, HIGH);
+      digitalWrite(11, LOW);
+    } else {
+      Serial.print("initiating shutter/1 down");
+      digitalWrite(10, LOW);
+      digitalWrite(11, HIGH);
+    }
+  }
 }
 
 void onMqttPublish(uint16_t packetId) {
   Serial.println("Publish acknowledged.");
   Serial.print("  packetId: ");
   Serial.println(packetId);
+}
+
+void setupPins() {
+  pinMode(5, OUTPUT);
+  pinMode(10, OUTPUT);
+  pinMode(11, OUTPUT);
+  digitalWrite(5, HIGH);
 }
 
 void setup() {
@@ -125,6 +144,8 @@ void setup() {
   mqttClient.setServer(MQTT_HOST, MQTT_PORT);
 
   connectToWifi();
+
+  setupPins();
 }
 
 void loop() {
